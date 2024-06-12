@@ -1,0 +1,112 @@
+<html>
+  <head>
+  </head>
+  <style>
+.background {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 40px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  width: 400px;
+}
+
+h2 {
+  text-align: center;
+  color: #333333;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+label {
+  font-weight: bold;
+  color: #555555;
+}
+
+input[type="text"],
+input[type="date"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+  </style>
+  <body>
+    <div class="background">
+      <div class="container">
+    <form>
+      <h2>Hello</h2>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="name" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="salary">Salary</label>
+        <input type="text" class="salary" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="date">Date</label>
+        <input type="date" class="date" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="text" id="ph" class="form-control">
+      </div>
+      <button type="button" onclick="sendwhatsapp();" class="btn-send">Send Via WhatsApp</button>
+    </form>
+  </div>
+</div>
+
+    <script>
+      function sendwhatsapp(){
+      
+
+       var name = document.querySelector(".name").value;
+       var salary = document.querySelector(".salary").value;
+       var date = document.querySelector(".date").value;
+        var phonenumber = document.getElementById("ph").value;
+        let text = "HELLO " + name + "\n" +
+           "THIS IS THE REMAINDER THAT YOUR WAGES AMOUNT OF RUPEES ="+salary + "WAS RECEIVED ON"+date +"\n"+
+           "BEST REGARDS,"+"\n"+
+           "VIP PUBLISHERS";
+
+// Properly encode the text
+var encodedText = encodeURIComponent(text);
+
+var url = "https://wa.me/" + phonenumber + "?text=" + encodedText;
+
+// Debug the URL by logging it to the console
+console.log(url);
+
+window.open(url, '_blank').focus();
+      }
+    </script>
+  </body>
+</html>
